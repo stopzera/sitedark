@@ -2,197 +2,262 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thiago Santos — STOPZERA | Creative Digital Experiences</title>
-  <meta name="description" content="Thiago Santos, também conhecido como STOPZERA, cria experiências digitais imersivas, visuais de alto impacto e projetos criativos." />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>STOPZERA — Thiago Santos | Creative WebGL Studio</title>
+  <meta name="description" content="Thiago Santos (STOPZERA) — Creative Digital Experiences, WebGL, 3D Graphics & Motion." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="./style.css" />
+  <!-- Three.js CDN para máxima fidelidade 3D com wireframes e prisma refrativo -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
-  <div class="cursor" id="cursor"></div>
 
-  <div class="preloader" id="preloader">
-    <p class="preloader-name">STOP<span>ZERA</span></p>
+  <!-- Background 3D WebGL Canvas (Tunnel + Prism + Floating Cards) -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- Crosshair Tech Grid Overlay -->
+  <div class="tech-grid-overlay">
+    <div class="ch-tl">+</div>
+    <div class="ch-tr">+</div>
+    <div class="ch-bl">+</div>
+    <div class="ch-br">+</div>
+    <div class="ch-center-l">+</div>
+    <div class="ch-center-r">+</div>
   </div>
 
-  <header class="navbar" id="navbar">
-    <a href="#hero" class="logo">STOP<span>ZERA</span></a>
-
-    <nav class="nav-links">
-      <a href="#about">Sobre</a>
-      <a href="#projects">Projetos</a>
-      <a href="#contact">Contato</a>
-    </nav>
-
-    <a class="cta-small" href="https://wa.me/3661951181" target="_blank" rel="noopener">WhatsApp</a>
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <a href="#hero" class="brand-logo">STOPZERA</a>
+    <button class="nav-toggle" id="navToggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </header>
 
-  <main>
-    <section class="hero" id="hero">
-      <canvas id="particles"></canvas>
-      <div class="hero-overlay"></div>
-
-      <div class="hero-content">
-        <p class="eyebrow reveal">Thiago Santos — Creative Identity</p>
-        <h1 class="hero-title">
-          <span class="reveal">STOP</span>
-          <span class="reveal gradient">ZERA</span>
-        </h1>
-        <p class="hero-text reveal">
-          Experiências digitais imersivas, estética futurista e criação visual com impacto.
-        </p>
-
-        <div class="hero-actions reveal">
-          <a class="button-primary" href="#contact">
-            Vamos criar algo
-            <span>↗</span>
-          </a>
-          <a class="button-ghost" href="#projects">Ver projetos</a>
-        </div>
-      </div>
-
-      <p class="scroll-hint">scroll to explore</p>
-    </section>
-
-    <section class="about" id="about">
-      <div class="container grid-about">
-        <div class="reveal">
-          <p class="eyebrow">Sobre</p>
-          <h2>Thiago Santos,<br /><span class="gradient">STOPZERA</span></h2>
-        </div>
-
-        <div>
-          <p class="lead reveal">
-            STOPZERA é a identidade criativa de Thiago Santos: uma fusão entre cultura digital, estética futurista e construção de experiências visuais memoráveis.
-          </p>
-
-          <p class="muted reveal">
-            O foco está em transformar ideias em presenças digitais fortes — do movimento e da tipografia à interação, ao vídeo e à identidade visual.
-          </p>
-
-          <div class="tags reveal">
-            <span>Direção criativa</span>
-            <span>WebGL & Three.js</span>
-            <span>Motion Design</span>
-            <span>Next.js</span>
-            <span>Identidade visual</span>
-            <span>Conteúdo digital</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="projects" id="projects">
-      <div class="container">
-        <div class="section-head">
-          <h2 class="reveal">Projetos</h2>
-          <p class="muted reveal">Seleção de trabalhos visuais, experimentos interativos e projetos criativos.</p>
-        </div>
-
-        <div class="projects-grid">
-          <article class="project-card reveal">
-            <div class="project-image" style="--image:url('images/project-1.svg')"></div>
-            <div class="project-info">
-              <div>
-                <h3>Neon Identity</h3>
-                <p>Branding / Motion — 2026</p>
-              </div>
-              <span class="arrow">↗</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-image" style="--image:url('images/project-2.svg')"></div>
-            <div class="project-info">
-              <div>
-                <h3>Digital Pulse</h3>
-                <p>WebGL / Interactive — 2025</p>
-              </div>
-              <span class="arrow">↗</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-image" style="--image:url('images/project-3.svg')"></div>
-            <div class="project-info">
-              <div>
-                <h3>Night Mode</h3>
-                <p>Visual / Content — 2025</p>
-              </div>
-              <span class="arrow">↗</span>
-            </div>
-          </article>
-
-          <article class="project-card reveal">
-            <div class="project-image" style="--image:url('images/project-4.svg')"></div>
-            <div class="project-info">
-              <div>
-                <h3>Future Frame</h3>
-                <p>3D / Creative Direction — 2024</p>
-              </div>
-              <span class="arrow">↗</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="contact" id="contact">
-    <div class="container">
-      <p class="eyebrow reveal">Contato</p>
-      <h2 class="contact-title reveal">Vamos construir algo <span class="gradient">memorável</span>.</h2>
-
-      <div class="contact-grid">
-        <a class="contact-card reveal" href="https://wa.me/3661951181" target="_blank" rel="noopener">
-          <div>
-            <small>WhatsApp</small>
-            <strong>(36) 61951-181</strong>
-          </div>
-          <span>↗</span>
-        </a>
-
-        <a class="contact-card reveal" href="mailto:stopzeramrx@gmail.com">
-          <div>
-            <small>E-mail</small>
-            <strong>stopzeramrx@gmail.com</strong>
-          </div>
-          <span>↗</span>
-        </a>
-
-        <a class="contact-card reveal" href="https://discord.com/users/stopzera" target="_blank" rel="noopener">
-          <div>
-            <small>Discord</small>
-            <strong>stopzera#0001</strong>
-          </div>
-          <span>↗</span>
-        </a>
-
-        <a class="contact-card reveal" href="https://instagram.com/thiagos4ntoss" target="_blank" rel="noopener">
-          <div>
-            <small>Instagram</small>
-            <strong>@thiagos4ntoss</strong>
-          </div>
-          <span>↗</span>
-        </a>
-
-        <a class="contact-card reveal" href="https://tiktok.com/@stopzeraa" target="_blank" rel="noopener">
-          <div>
-            <small>TikTok</small>
-            <strong>@stopzeraa</strong>
-          </div>
-          <span>↗</span>
-        </a>
-      </div>
-
-      <div class="footer-bottom">
-        <p>© <span id="year"></span> Thiago Santos — STOPZERA</p>
-        <p>HTML • CSS • JavaScript</p>
+  <!-- Side Navigation Overlay -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-content">
+      <ul class="menu-list">
+        <li><a href="#hero" class="menu-link">01. TOP</a></li>
+        <li><a href="#mission" class="menu-link">02. MANIFESTO</a></li>
+        <li><a href="#works" class="menu-link">03. PROJETOS</a></li>
+        <li><a href="#profile" class="menu-link">04. SOBRE</a></li>
+        <li><a href="#contact" class="menu-link">05. CONTATO</a></li>
+      </ul>
+      <div class="menu-socials">
+        <a href="https://instagram.com/thiagos4ntoss" target="_blank">Instagram ↗</a>
+        <a href="https://tiktok.com/@stopzeraa" target="_blank">TikTok ↗</a>
+        <a href="https://wa.me/3661951181" target="_blank">WhatsApp ↗</a>
       </div>
     </div>
-  </footer>
+  </div>
+
+  <!-- Vertical Indicator -->
+  <aside class="scroll-indicator">
+    <span>scroll to explore +</span>
+  </aside>
+
+  <!-- Main Scrollable Story Track -->
+  <main class="viewport-track">
+
+    <!-- SEÇÃO 1: HERO (ALCHE STYLE) -->
+    <section class="story-section section-hero" id="hero">
+      <div class="section-inner hero-inner">
+        <div class="hero-watermark">
+          <div class="wm-row">STOPZERA</div>
+          <div class="wm-row">STOPZERA</div>
+          <div class="wm-row wm-main">STOPZERA</div>
+          <div class="wm-row">STOPZERA</div>
+          <div class="wm-row">STOPZERA</div>
+        </div>
+
+        <div class="hero-news-badge">
+          <span class="badge-tag">LATEST</span>
+          <span class="badge-date">2026.10</span>
+          <p class="badge-title">Next-Gen WebGL & Spatial Experience Released</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 2: MANIFESTO / GEOMETRIC BLUEPRINT -->
+    <section class="story-section section-blueprint" id="mission">
+      <div class="section-inner blueprint-inner">
+        <!-- SVG Sacred Geometry Wireframe -->
+        <div class="sacred-geometry">
+          <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="300" cy="300" r="260" stroke="rgba(255,255,255,0.18)" stroke-width="1" stroke-dasharray="2 4" />
+            <circle cx="300" cy="300" r="180" stroke="rgba(255,255,255,0.25)" stroke-width="1" />
+            <circle cx="300" cy="300" r="100" stroke="rgba(255,255,255,0.2)" stroke-width="1" />
+            <!-- Triangles -->
+            <polygon points="300,60 510,420 90,420" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" />
+            <polygon points="300,140 450,400 150,400" stroke="rgba(255,255,255,0.3)" stroke-width="1" />
+            <polygon points="300,540 510,180 90,180" stroke="rgba(255,255,255,0.2)" stroke-width="1" stroke-dasharray="4 4" />
+            <!-- Radial Rays -->
+            <line x1="300" y1="40" x2="300" y2="560" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+            <line x1="40" y1="300" x2="560" y2="300" stroke="rgba(255,255,255,0.15)" stroke-width="1" />
+            <line x1="116" y1="116" x2="484" y2="484" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+            <line x1="116" y1="484" x2="484" y2="116" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+          </svg>
+        </div>
+
+        <div class="blueprint-text-container">
+          <p class="scramble-heading" id="manifestoHeading">
+            Architect digital realities that transcend screens.
+          </p>
+          <p class="blueprint-sub">Thiago Santos // Studio Director & Visual Alchemist</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: PROJETOS / 3D CAROUSEL (GALLERY) -->
+    <section class="story-section section-works" id="works">
+      <div class="section-inner works-inner">
+        <div class="works-header-row">
+          <span class="section-label">SELECTED WORKS (2024—2026)</span>
+          <a href="#contact" class="more-works-btn">More Works ↗</a>
+        </div>
+
+        <!-- Interactive 3D Showcase Panels -->
+        <div class="works-cards-stream">
+          <div class="work-glass-card active" data-index="0">
+            <div class="card-thumb" style="background-image: url('images/work1.svg');">
+              <span class="card-badge">UNREAL ENGINE / WEBGL</span>
+            </div>
+            <div class="card-meta">
+              <div class="meta-date">2026.05</div>
+              <h3 class="meta-title">NEON METAVERSE / STAGE</h3>
+              <p class="meta-desc">Next-generation immersive virtual world & real-time volumetric stage created by STOPZERA.</p>
+              <div class="meta-tags">
+                <span>WebGL</span>
+                <span>Three.js</span>
+                <span>Creative Tech</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-glass-card" data-index="1">
+            <div class="card-thumb" style="background-image: url('images/work2.svg');">
+              <span class="card-badge">FORTNITE / UEFN</span>
+            </div>
+            <div class="card-meta">
+              <div class="meta-date">2025.11</div>
+              <h3 class="meta-title">CYBER PULSE ARENA</h3>
+              <p class="meta-desc">High-speed competitive spatial installation reaching over 20M+ views worldwide.</p>
+              <div class="meta-tags">
+                <span>UEFN</span>
+                <span>Shader Dev</span>
+                <span>Virtual Production</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="work-glass-card" data-index="2">
+            <div class="card-thumb" style="background-image: url('images/work3.svg');">
+              <span class="card-badge">IDENTITY / MOTION</span>
+            </div>
+            <div class="card-meta">
+              <div class="meta-date">2025.04</div>
+              <h3 class="meta-title">DARK MATTER VISUALS</h3>
+              <p class="meta-desc">Audiovisual identity, generative typography and responsive live performance rig.</p>
+              <div class="meta-tags">
+                <span>Audio Reactive</span>
+                <span>GLSL</span>
+                <span>Direction</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: FEATURED PRODUCT / ABOUT (STELLLA EQUIVALENT) -->
+    <section class="story-section section-feature" id="profile">
+      <div class="section-inner feature-inner">
+        <div class="feature-glass-box">
+          <div class="feature-header">
+            <h2 class="feature-title">Thiago Santos <span class="arrow-sym">↗</span></h2>
+            <span class="feature-alias">aka STOPZERA</span>
+          </div>
+
+          <p class="feature-jp-desc">
+            Desenvolvedor criativo, visual designer e especialista em experiências 3D imersivas para web, metaverso e produções interativas de alto impacto.
+          </p>
+
+          <p class="feature-en-desc">
+            Creative director and WebGL developer delivering cutting-edge real-time 3D, spatial web interfaces, custom GLSL shaders and frictionless digital identities.
+          </p>
+
+          <div class="feature-specs-grid">
+            <div class="spec-col">
+              <h4>SPECIALIZATION</h4>
+              <ul>
+                <li>WebGL & Custom Shaders</li>
+                <li>Three.js / React Three Fiber</li>
+                <li>Real-time Volumetric 3D</li>
+              </ul>
+            </div>
+            <div class="spec-col">
+              <h4>EXPERIENCE</h4>
+              <ul>
+                <li>Interactive Web Direction</li>
+                <li>Metaverse & Game Worlds</li>
+                <li>Audiovisual & Motion Systems</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 5: FOOTER & CONTACT (ALCHE FOOTER CLONE) -->
+    <section class="story-section section-footer" id="contact">
+      <div class="section-inner footer-inner">
+        <div class="footer-prism-symbol">
+          <svg viewBox="0 0 100 100" fill="none">
+            <polygon points="50,15 90,85 10,85" stroke="rgba(255,255,255,0.7)" stroke-width="4" />
+            <polygon points="50,35 75,80 25,80" stroke="rgba(255,255,255,0.3)" stroke-width="2" />
+          </svg>
+        </div>
+
+        <div class="footer-nav-grid">
+          <div class="footer-col">
+            <a href="#hero">Top</a>
+            <a href="#mission">Manifesto</a>
+            <a href="#works">Works</a>
+          </div>
+          <div class="footer-col">
+            <a href="#profile">About</a>
+            <a href="#contact">Contact</a>
+            <a href="https://discord.com/users/stopzera" target="_blank">Discord <span class="sub-val">#0001</span></a>
+          </div>
+          <div class="footer-col">
+            <span class="col-head">Channels ▾</span>
+            <a href="https://instagram.com/thiagos4ntoss" target="_blank">Instagram</a>
+            <a href="https://tiktok.com/@stopzeraa" target="_blank">TikTok</a>
+            <a href="https://wa.me/3661951181" target="_blank">WhatsApp</a>
+          </div>
+        </div>
+
+        <div class="footer-cta-row">
+          <a href="mailto:stopzeramrx@gmail.com" class="action-bubble">
+            Contact ↗ <span class="mail-hint">stopzeramrx@gmail.com</span>
+          </a>
+          <a href="https://wa.me/3661951181" target="_blank" class="action-bubble">
+            WhatsApp ↗ <span class="mail-hint">(36) 61951-181</span>
+          </a>
+        </div>
+
+        <div class="footer-bottom-bar">
+          <p class="copyright-line">© 2026 STOPZERA. All Rights Reserved.</p>
+          <p class="tag-line">Engineered with Three.js & WebGL</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
 
   <script src="./main.js"></script>
 </body>
